@@ -14,10 +14,9 @@ var io = socketio(server);
 io.on('connection', (socket)=>{
     console.log('New User connected');
 
-    socket.emit('newEmail', {
-        from: 'mike@example.com',
+    socket.emit('newMessage', {
+        from: 'Jake',
         text: 'Hi, Sehun',
-        createAt: 123
     });
 
     socket.on('createEmail', (newEmail)=>{
@@ -26,7 +25,11 @@ io.on('connection', (socket)=>{
 
     socket.on('disconnect', ()=>{
         console.log('disconnected!!');
-    })
+    });
+
+    socket.on('createMessage', (message)=>{
+        console.log('createMessage', message);
+    });
 });
 
 
