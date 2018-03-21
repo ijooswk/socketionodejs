@@ -3,10 +3,10 @@ var socket = io();
 socket.on('connect', function (){
     console.log('Connected Socket');
 
-    socket.emit('createMessage', {
-        from: 'Andrew',
-        text: 'Yeah, that works for me'
-    })
+    // socket.emit('createMessage', {
+    //     from: 'Andrew',
+    //     text: 'Yeah, that works for me'
+    // })
 });
 
 socket.on('disconnect', function (){
@@ -21,3 +21,11 @@ socket.on('newEmail', function (email) {
 socket.on('newMessage', function (message) {
     console.log('newMessage', message)
 })
+
+socket.emit('createMessage', {
+    from: 'Frank',
+    text: 'Hi'
+}, 
+function (msg) {
+    console.log(msg);
+});
